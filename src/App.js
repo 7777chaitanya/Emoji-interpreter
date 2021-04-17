@@ -16,7 +16,16 @@ var emojiList = Object.keys(emojis);
 export default function App() {
   const [emojiMeaning, setEmojiMeaning] = useState("");
   function clickedEmoji(emoji) {
+    console.log("called sir");
     return setEmojiMeaning(emojis[emoji]);
+  }
+
+  function emojiEntered(event) {
+    let meaningOutput = event.target.value;
+    setEmojiMeaning(emojis[event.target.value]);
+    if (meaningOutput === undefined) {
+      setEmojiMeaning("This emoji is not in our database.");
+    }
   }
   return (
     <div className="App">
@@ -35,6 +44,7 @@ export default function App() {
           </strong>
         </h1>
         <input
+          onChange={() => emojiEntered(event)}
           style={{
             width: "50%",
             textAlign: "center",
