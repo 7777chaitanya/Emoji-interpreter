@@ -21,7 +21,7 @@ export default function App() {
   }
 
   function emojiEntered(event) {
-    let meaningOutput = event.target.value;
+    let meaningOutput = emojis[event.target.value];
     setEmojiMeaning(emojis[event.target.value]);
     if (meaningOutput === undefined) {
       setEmojiMeaning("This emoji is not in our database.");
